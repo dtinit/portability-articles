@@ -1,6 +1,6 @@
 ---
 title:  Google Photos archive to online storage/backup
-datatype: photos
+datatype: Photos
 sources: Google Photos
 destinations: ["Microsoft OneDrive", "Drive", "Dropbox"]
 ---
