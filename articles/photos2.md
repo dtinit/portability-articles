@@ -1,6 +1,6 @@
 ---
 title:  Apple iCloud photos to Google Photos
-datatype: photos
+datatype: Photos
 sources: iCloud Photos
 destinations: ["Google Photos"]
 ---
