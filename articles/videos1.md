@@ -12,6 +12,10 @@ to another location.  In order to make use of this, you're going to need to hand
 or device that has enough storage to be able to store the ZIP and probably also to unZIP it if you want to
 do anything with the videos.
 
+> If you don't have enough storage or network bandwidth makes this less feasible, you may need to take an
+> intermediary step and first export your YouTube videos to an online document storage service, then upload
+> from there to the ultimate destination.  This index has help available on that step.
+
 Many other video platforms can accept video uploads in the format provided by YouTube, but you're going to 
 have to upload the videos manually yourself. In fact, this export approach [is even recommended](https://it.stonybrook.edu/help/kb/moving-videos-from-one-youtube-account-to-another) 
 in order to move videos from one YouTube account to another.
