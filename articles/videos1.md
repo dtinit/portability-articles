@@ -1,6 +1,6 @@
 ---
 title:  YouTube Videos from one account to another
-datatype: videos
+datatype: Videos
 sources: YouTube
 destinations: ["Another account", Microsoft Stream]
 ---
