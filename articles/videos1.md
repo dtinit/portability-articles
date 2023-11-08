@@ -17,5 +17,5 @@ have to upload the videos manually yourself. In fact, this export approach [is e
 in order to move videos from one YouTube account to another.
 
 This may be the best option for transfering YouTube videos to the following destinations:
- * [Microsoft Streams](https://www.microsoft.com/en-us/microsoft-365/microsoft-stream)
+ * [Microsoft Streams](https://www.microsoft.com/en-us/microsoft-365/microsoft-stream) - here are [instructions for uploading](https://learn.microsoft.com/en-us/stream/portal-upload-video) videos that you've already downloaded
  * Another YouTube account
