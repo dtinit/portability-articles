@@ -15,19 +15,15 @@ you through the process of both exporting your Goodreads history, and uploading 
 If you decide not to do this during account creation, it can still be done later.  [This video](
 https://www.youtube.com/watch?v=Yq4Gvo5O2Cs) has some good instructions on both options.
 
-## XXX Another step described
-
-Here's some markdown reminders along with a [link to markdown help](https://www.markdownguide.org/):
-
- * Separate paragraphs with empty lines
- * Bulleted lists can use '*' with space on either side, like this
-
 ## What this solution can do
 
 This process does a great job of moving you to The Storygraph.  It takes your entire library.
 * If you're comfortable editing CSV files in Excel or a text editor, you may be able to do 
 your own filtering.  The CSV format is very straightforward, and a tool like Excel will allow
 you to sort by "read date", for example, to import only the latest items from Goodreads.
+* It appears that importing handles re-imported lines well, although I did not do extensive
+testing.
+
 
 ## What this solution does not do
 
