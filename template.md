@@ -1,6 +1,6 @@
 ---
 title:  XXX Replace with the title that will appear as links to the article, and as the tab title in the browser
-datatype: XXX Put ONE datatype in this field: Photos, Videos, Contacts, or another existing datatype (plural)
+datatype: XXX Put ONE datatype in this field - Photos, Videos, Contacts, or another existing datatype (plural)
 sources: XXX A single source that the article will explain how to get data from, or a list in square brackets
 destinations: XXX A single destination or list like ["Destination A", "Destination B", "etc"]
 ---
