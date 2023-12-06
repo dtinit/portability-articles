@@ -1,6 +1,6 @@
 ---
 title:  Use Songshift iOS app to synchronize playlists between services
-datatype: playlists
+datatype: Playlists
 sources: ['Amazon Music', 'Apple Music', 'Spotify']
 destinations: ['Amazon Music', 'Apple Music', 'Spotify']
 ---
