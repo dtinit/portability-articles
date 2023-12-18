@@ -1,7 +1,7 @@
 ---
 title:  Meta (Facebook, Instagram) Photos transfer via DTP to online storage/backup or alternative photo service
 datatype: Photos
-sources: Facebook Photos, Instagram Photos
+sources: ["Facebook Photos", "Instagram Photos"]
 destinations: ["Google Photos", "Dropbox", "Koofr", "Photobucket", "Backblaze B2"]
 ---
 
