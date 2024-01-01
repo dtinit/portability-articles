@@ -14,4 +14,4 @@ Vimeo does allow users to download their own videos, but then uploading them
 again to a different service requires both bandwidth and storage as well as possibly a lot of time.
 
 This [Quora thread](https://www.quora.com/How-do-I-transfer-massive-quantities-of-videos-from-Vimeo-to-YouTube-822-videos-530-GB) offers
-some 
+some ideas.
