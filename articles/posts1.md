@@ -1,6 +1,6 @@
 ---
 title:  Meta (Facebook) Posts and Notes transfer via DTP
-datatype: Posts
+datatype: Text Social Media
 sources: Facebook
 destinations: ["Google Docs", "Daybook", "WordPress.com/Jetpack", "Blogger"]
 ---
