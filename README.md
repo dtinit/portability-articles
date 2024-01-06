@@ -1,5 +1,5 @@
 # portability-articles
-A collection of articles to help find solutions for data portability
+A public-domain collection of articles to help find solutions for data portability
 
 To contribute, update an existing article or create a new one! We can also use Issues to track requests, suggestions
 and errors.
