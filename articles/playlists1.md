@@ -22,5 +22,6 @@ on the services they use.
 ## What this solution does not do
 
 Some ways this might not work for you:
+
 * if you don't have an iOS device
 * if you are unwilling to share your music account information with SongShift
