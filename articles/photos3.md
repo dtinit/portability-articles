@@ -17,4 +17,7 @@ It can transfer a copy of all, or a subset of, your data directly from Meta's se
 
 ## What this solution does not do
 
-Because it is designed to transfer photos and videos, it does not include other content from Facebook or Instagram, such as text posts or notes. If you wish to transfer Facebook posts and notes to a service designed to receive and handle such content, see [https://portmap.dtinit.org/articles/posts1.md/](https://portmap.dtinit.org/articles/posts1.md/). If you wish to download an archive file with all of your content together to your local device, Meta offers a download tool here: [https://accountscenter.facebook.com/info_and_permissions/dyi/](https://accountscenter.facebook.com/info_and_permissions/dyi/).
+Because it is designed to transfer photos and videos, it does not include other content from Facebook or Instagram, such as text posts or notes. 
+
+ * If you wish to transfer Facebook posts and notes to a service designed to receive and handle such content, see [https://portmap.dtinit.org/articles/posts1.md/](https://portmap.dtinit.org/articles/posts1.md/).
+ * If you wish to download an archive file with all of your content together to your local device, Meta offers a download tool here: [https://accountscenter.facebook.com/info_and_permissions/dyi/](https://accountscenter.facebook.com/info_and_permissions/dyi/).
