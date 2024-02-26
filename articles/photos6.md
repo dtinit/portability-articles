@@ -36,7 +36,7 @@ Some other sites advocate using browser extensions or 3rd-party tools.
 ## Transfering to another online site
 
 Ultimately it might be easier to take a roundabout approach.  Meta supports sending your Facebook and Instagram content to other online services
-via [https://github.com/dtinit/portability-articles/blob/main/articles/photos3.md](data portability tools) (the Data Transfer Project, supported by the 
+via [data portability tools](photos3.md) (using the Data Transfer Project, supported by the 
 [https://dtinit.org](Data Transfer Initiative)).  After getting Meta to transfer your photos to a cloud photo or backup service, that service may have
 better functionality for getting your own copies of bulk content - or it might solve your use case sufficiently to have that content securely backed up
 in another cloud location.
