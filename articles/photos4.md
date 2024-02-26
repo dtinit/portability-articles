@@ -2,7 +2,7 @@
 title:  Exporting photos from Flickr
 datatype: Photos
 sources: Flickr
-destinations: ["local backup"]
+destinations: ["Download myself"]
 ---
 
 # Export photos from Flickr
