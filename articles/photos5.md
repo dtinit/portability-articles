@@ -2,7 +2,7 @@
 title:  Download Google Photos for local backup
 datatype: Photos
 sources: Google Photos
-destinations: ["local backup"]
+destinations: ["Download myself"]
 ---
 
 # Download Google Photos for local backup
