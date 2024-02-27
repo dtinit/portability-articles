@@ -11,6 +11,6 @@ To create a new article:
    "videos1.md" "videos2.md" and so on, so if the next available name is "videos3.md" use that.
  * Paste the text from the template file in
 
-You will need to [fork the repository, clone it](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) an submit a pull request when your change or addition is ready.
+You will need to [fork the repository, clone it](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) and submit a pull request when your change or addition is ready.
 
 After a pull request is merged, the article will shortly appear on a URL TBD.
