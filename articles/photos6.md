@@ -3,6 +3,7 @@ title: Instagram Photos - how to save or access your own copy on a device
 datatype: Photos
 sources: ["Instagram Photos"]
 destinations: ["Download myself"]
+---
 
 # Are my Instagram photos copied anywhere else?
 
