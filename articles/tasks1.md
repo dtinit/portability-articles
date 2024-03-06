@@ -2,7 +2,7 @@
 title: Transfering and exporting Todoist tasks
 datatype: Tasks
 sources: Todoist
-destination: ["Google Sheet", "Things", "Download myself"]
+destinations: ["Google Sheet", "Things", "Download myself"]
 ---
 
 # Todoist and Interoperability
@@ -13,10 +13,10 @@ There are some third-party open source solutions that allow user information to 
 
 ## Todoist to Things
 
-Some services, such as Things, allow the user to migrate their information from Todoist using the Todoist public API (https://developer.todoist.com/sync/v9/#get-all-projects), but it can result in a complicated and tedious process for the user because queries must be performed to obtain the information requested.
+Some services, such as Things, allow the user to migrate their information from Todoist using the [Todoist public API](https://developer.todoist.com/sync/v9/#get-all-projects), but it can result in a complicated and tedious process for the user because queries must be performed to obtain the information requested.
 
 ## Download data for myself
-This (third-party open source)[https://darekkay.com/todoist-export/] tool allows the user to backup Todoist data as CSV or JSON. Both formats are available but it is recommended to download the information in CSV (Comma Separated Values) due to its ease of reading both for the user downloading and for carrying out the import process in other services.
+This [third-party open source](https://darekkay.com/todoist-export/) tool allows the user to backup Todoist data as CSV or JSON. Both formats are available but it is recommended to download the information in CSV (Comma Separated Values) due to its ease of reading both for the user downloading and for carrying out the import process in other services.
 
 **In order to export your data you need to sign in to your Todoist account via the service itself.**
 
