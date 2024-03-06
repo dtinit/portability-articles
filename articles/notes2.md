@@ -2,7 +2,7 @@
 title: Exporting notes from Werdsmith
 datatype: Notes
 sources: Werdsmith
-destination: ["Download myself"]
+destinations: ["Download myself"]
 ---
 
 # Export notes from Werdsmith
