@@ -2,7 +2,7 @@
 title: Exporting notes from Werdsmith
 datatype: Notes
 sources: Werdsmith
-destination: ["Download myself"]
+destinations: ["Download myself"]
 ---
 
 # Export notes from Werdsmith
@@ -13,7 +13,7 @@ This limits and almost forces the user to stay in the service and being able to 
 
 ## Download data
 
-  * In order to export the data you must go to the (Werdsmith Support site)[https://werdsmith.com/support].
+  * In order to export the data you must go to the [Werdsmith Support site](https://werdsmith.com/support).
   * In the **Export your data** section, you click in the **here** button.
 
 This generates a page within Werdsmith that displays all of the user's projects, notes, sections, and more in a non-intuitive table.
