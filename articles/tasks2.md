@@ -2,7 +2,7 @@
 title: Exporting TickTick backup to Things
 datatype: Tasks
 sources: TickTick
-destination: ["Things", "Download myself"]
+destinations: ["Things", "Download myself"]
 ---
 
 # Export data from Ticktick to import into Things
@@ -15,14 +15,14 @@ These difficulties may be a strategy by TickTick so that the user is tied to usi
 
 ## Create data backup from TickTick
 
-As mentioned above, TickTick only offers the option to export data by backing it up to a CSV file. (This article)[https://help.ticktick.com/articles/7055781405648748544] from the official site describes the steps to follow.
+As mentioned above, TickTick only offers the option to export data by backing it up to a CSV file. [This article](https://help.ticktick.com/articles/7055781405648748544) from the official site describes the steps to follow.
 
 It is necessary to mention that to perform the backup it must be done from the web version. With the login already done, we click on Settings, then on Account, and finally on "Generate Backup". This will generate a CSV file that will be downloaded to your computer.
 
 
 ## Import backup from TickTick into Things
 
-This process is very complex but in (this article)[https://culturedcode.com/things/support/articles/2803569/#wbpki] we can see that Things provides various options for the user to import their information, however, the CSV format in which our backup is found is not among them and that results in carrying out various actions by the user.
+This process is very complex but in [this article](https://culturedcode.com/things/support/articles/2803569/#wbpki) we can see that Things provides various options for the user to import their information, however, the CSV format in which our backup is found is not among them and that results in carrying out various actions by the user.
 
 Our first option is to copy from the backup file and paste into Things manually and this can take a long time, depending on the size of our file, but it is understandable that these types of actions cannot be automated.
 
