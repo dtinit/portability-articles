@@ -1,5 +1,5 @@
 # portability-articles
-A public-domain collection of articles to help find solutions for data portability, hosted and moderated by the [Data Transfer Initiative][dtinit.org]
+A public-domain collection of articles to help find solutions for data portability, hosted and administered by the [Data Transfer Initiative](dtinit.org)
 
 To contribute, update an existing article or create a new one! We can also use Issues to track requests, suggestions
 and errors.
