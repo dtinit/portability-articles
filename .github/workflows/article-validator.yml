@@ -1,0 +1,29 @@
+name: Article Validator
+
+on:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.11]
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - run: echo "Checkout code"
+      
+      - name: Setup Python ${{ matrix.python-version}}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: echo "Setting up Python"
+      
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - run: echo "Installing Dependencies"
