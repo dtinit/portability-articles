@@ -2,7 +2,6 @@ name: Article Validator
 
 on:
   pull_request:
-    # branches: ["main"]
     types: [opened, reopened] 
 
 jobs:
@@ -31,5 +30,5 @@ jobs:
 
       - name: Run sanity check
         run: |
-          chmod +x sanity_check.sh # Make script executable
-          ./sanity_check.sh # Run script
+          chmod +x sanity_check.sh
+          ./sanity_check.sh
