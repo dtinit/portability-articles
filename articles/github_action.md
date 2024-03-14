@@ -1,8 +1,8 @@
 ---
-title:  Transfering Evernote content anywhere
 datatype: Notes
-sources: Evernote
+title:  Transfering Evernote content anywhere
 destinations: ["Bear", "OneNote", "Joplin", "Zoho", "Notion"]
+sources: Evernote
 ---
 
 # Evernote and Interoperability
