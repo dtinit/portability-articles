@@ -13,7 +13,6 @@ def article_validator(markdown_file):
 
 def main():
   result = article_validator(argv[1])
-  print(result)
   return result
 
 if __name__ == "__main__":
