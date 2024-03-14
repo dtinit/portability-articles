@@ -2,7 +2,7 @@
 
 echo "Loading the Markdown files that have changed"
 
-for x in $(git diff --name-only origin/${GITHUB_HEAD_REF} main -- "*.md")
+for x in $(git diff --name-only HEAD origin/main -- "*.md")
 do
   is_valid_md=$(python validate_markdown_metadata.py $x)
   if $is_valid_md; then
