@@ -1,7 +1,7 @@
 ---
 datatype: Notes
 title:  Transfering Evernote content anywhere
-destinations: ["Bear", "OneNote", "Joplin", "Zoho", "Notion"]
+destination: ["Bear", "OneNote", "Joplin", "Zoho", "Notion"]
 sources: Evernote
 ---
 
