@@ -86,6 +86,21 @@ migrating a number of business email accounts to a new platform!
 * Microsoft Outlook
 * Apple Mail.app
 
+
+### Newsletter
+
+Datatype: "Newsletter"
+
+Newsletter authors who are working alone or in small informal groups often use a newsletter platform.
+Moving content off that platform, as well as subscribers, is non-trivial.  Self-hosted via open source
+servers is another hosting option.  Some newsletter use cases are more corporate than individual so 
+we'll try to focus more on the inidividual use cases.
+
+* Substack 
+* beehiiv
+* ConvertKit
+
+
 ### Calendar
 
 Datatype: "Calendar"
