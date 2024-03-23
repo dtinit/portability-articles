@@ -2,7 +2,6 @@
 title: Transfering and exporting Todoist tasks
 datatype: Tasks
 sources: Todoist
-destinations: ["Google Sheet", "Things", "Download myself"]
 ---
 
 # Todoist and Interoperability

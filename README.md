@@ -1,4 +1,6 @@
 # portability-articles
+
+# Testing purpose!! Will be deleted
 A public-domain collection of articles to help find solutions for data portability, hosted at the [Portability Map site](portmap.dtinit.org) and administered by the [Data Transfer Initiative](dtinit.org). This project is made to support data rights and data portability by sharing user educational material on how to exercise those rights and transfer personal data.
 
 To use the collection of articles to move or access your data online, please go ahead to the hosted [Portability Map](portmap.dtinit.org) and make selections to discover what articles and solutions may help you control and move your own data in the cloud.
