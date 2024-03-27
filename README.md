@@ -16,4 +16,6 @@ To create a new article:
 
 You will need to [fork the repository, clone it](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) and submit a pull request when your change or addition is ready.
 
-After a pull request is merged, the article will shortly appear on the [site](portmap.dtinit.org) but will remain available in this repository as a resource in teh public commons.
+After a pull request is merged, the article will shortly appear on the [site](portmap.dtinit.org) but will remain available in this repository as a resource in the public commons.
+
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
