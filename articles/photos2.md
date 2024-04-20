@@ -19,9 +19,9 @@ Not only does this solution transfer your photos, it also preserves them in albu
 ## What this solution does not do
 
 It does not transfer:
- * Live photos 
- * Smart albums
- * Permissions 
- * Videos in albums
- * "Original" of photos - copy of photo prior to edit
- * Duplicates
+ - Live photos 
+ - Smart albums
+ - Permissions 
+ - Videos in albums
+ - "Original" of photos - copy of photo prior to edit
+ - Duplicates
