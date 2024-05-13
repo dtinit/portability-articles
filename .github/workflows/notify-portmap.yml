@@ -1,0 +1,19 @@
+name: Notify Portmap
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  notify-portmap:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Send repository_dispatch
+      uses: peter-evans/repository_dispatch@v3
+      with:
+        # GitHub personal access token.
+        # See action description for instructions and requirements.
+        token: ${{ secrets.PORTMAP_REPOSITORY_DISPATCH_PAT }}
+        repsoitory: dtinit/portmap
+        event-type: content_update
