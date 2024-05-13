@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Send repository_dispatch
-      uses: peter-evans/repository_dispatch@v3
+      uses: peter-evans/repository-dispatch@v3
       with:
         # GitHub personal access token.
         # See action description for instructions and requirements.
