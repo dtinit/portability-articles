@@ -15,5 +15,5 @@ jobs:
         # GitHub personal access token.
         # See action description for instructions and requirements.
         token: ${{ secrets.PORTMAP_REPOSITORY_DISPATCH_PAT }}
-        repsoitory: dtinit/portmap
+        repository: dtinit/portmap
         event-type: content_update
