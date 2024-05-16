@@ -12,6 +12,9 @@ that happens in the cloud, without requiring you to have enough bandwidth and di
 transfer via export and then separate upload.  The [excellent support article](https://support.apple.com/en-us/HT208514) 
 explains how to go to [privacy.apple.com](https://privacy.apple.com/) to transfer directly to Google Photos.
 
+The interoperability basis for this transfer is the use of [Data Transfer Project](https://github.com/google/data-transfer-project) servers.
+The DTP platform is an extensible Open Source platform for server-to-server data transfers specifically for user data as requested by users. 
+
 ## What this solution can do
 
 Not only does this solution transfer your photos, it also preserves them in albums.
