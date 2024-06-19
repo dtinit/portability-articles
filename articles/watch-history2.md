@@ -2,7 +2,7 @@
 title:  Youtube video watching history  
 datatype: "Viewing History"
 sources: Youtube
-destinations: ["Download myself", "Google Drive", "Microsoft OneDrive",  "Dropbox", "Box"], 
+destinations: ["Download myself", "Google Drive", "Microsoft OneDrive",  "Dropbox", "Box"]
 ---
 
 # Youtube video watching history 

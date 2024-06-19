@@ -2,7 +2,7 @@
 title:  Tiktok Video Browsing History  
 datatype: "Viewing History"
 sources: Tiktok
-destinations: ["Download myself"], 
+destinations: ["Download myself"]
 ---
 
 # Tiktok Video Browsing History 
