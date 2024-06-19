@@ -2,7 +2,7 @@
 title:  Transferring your Instagram post/video viewing history elsewhere 
 datatype: "Viewing History"
 sources: Instagram
-destinations: ["Download myself", "Google Drive", "Dropbox"], 
+destinations: ["Download myself", "Google Drive", "Dropbox"]
 ---
 
 # Instagram "Download your information" for posts/videos you've viewed
