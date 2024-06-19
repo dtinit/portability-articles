@@ -2,7 +2,7 @@
 title:  Google Photos archive to online storage/backup
 datatype: Photos
 sources: Google Photos
-destinations: ["Microsoft OneDrive", "Drive", "Dropbox"]
+destinations: ["Microsoft OneDrive", "Google Drive", "Dropbox"]
 ---
 
 # How to archive your Google Photos to Drive, Dropbox or Microsoft OneDrive, using Google Takeout
