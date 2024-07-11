@@ -12,6 +12,3 @@ Netflix offers an interface to download your personal data via their website. Wi
 Successful execution of an information access request results in an email with a link to re-authenticate (through password entry) followed by a downloadable ZIP archive, which includes a cover sheet and CSV files including viewing history, interaction history, profile information, and a broad range of additional data. A PDF "Cover Page" describes the files and data included in the request.
 
 For users who are not owners of an account but whose email address is associated with a profile in the account, Netflix's [reference page](https://help.netflix.com/en/node/100624) suggests the user can email privacy at netflix dot com to request a copy of their personal activity data.
-
-// ## What it does not do
-
