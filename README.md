@@ -12,7 +12,12 @@ To create a new article:
  * The article should have a permanent name that can serve as a file name - articles on porting videos can be called
    "videos1.md" "videos2.md" and so on, so if the next available name is "videos3.md" use that.
  * Paste the text from the template file in
- * Use a data type listed in the [Content Plan file](content-plan.md)
+ * Use a [supported data type](datatype-help.yaml) or add a new one (see below)
+ 
+To add a new datatype:
+ * Confirm it's listed in the [Content Plan file](content-plan.md)
+ * Add an entry to [datatype-help.yaml](datatype-help.yaml) for the new data type
+ * (Recommended) Choose a matching icon from [Lucide](https://lucide.dev/icons/) and add it to the [Portability Map](https://github.com/dtinit/portmap), or just [create an issue](https://github.com/dtinit/portmap/issues/new?title=Add%20an%20icon%20for%20new%20datatype%20%5BDATATYPE%20NAME%20HERE%5D) for it.
 
 You will need to [fork the repository, clone it](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) and submit a pull request when your change or addition is ready.
 
