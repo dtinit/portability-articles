@@ -7,7 +7,7 @@ destinations: ['Amazon Music', 'Apple Music', 'Spotify', 'YouTube Music']
 
 # Use Soundiiz online service to synchronize playlists between music services
 
-## SongShift
+## Soundiiz
 
 The [Soundiiz service](https://soundiiz.com/features) offers a number of features for moving
 playlists between different music streaming services.  One of the challenges in this domain
