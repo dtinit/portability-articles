@@ -43,6 +43,37 @@ def extract_yaml_and_body(file_content):
     body = '\n'.join(body_content)
     return yaml_content, body
 
+# Validates the required fields in the frontmatter
+def validate_fields(frontmatter, file_path):
+
+    # Validate 'title': Must be a string
+    if not isinstance(frontmatter['title'], str):
+        raise ValueError(f"'title' must be a string in {file_path}")
+
+    # Validate 'datatype': Must be a string (no lists allowed)
+    if not isinstance(frontmatter['datatype'], str):
+        raise ValueError(f"'datatype' must be a string in {file_path}")
+
+    # Validate 'sources'
+    if isinstance(frontmatter['sources'], str):
+        # Single source, valid
+        pass
+    elif isinstance(frontmatter['sources'], list):
+        # Multiple sources, valid list format
+        pass
+    else:
+        raise ValueError(f"'sources' must be either a string or a list in {file_path}")
+
+    # Validate 'destinations'
+    if isinstance(frontmatter['destinations'], str):
+        # Single destination, valid
+        pass
+    elif isinstance(frontmatter['destinations'], list):
+        # Multiple destinations, valid list format
+        pass
+    else:
+        raise ValueError(f"'destinations' must be either a string or a list in {file_path}")
+
 def validate_frontmatter(file_path):
     try:
         # Open the markdown file and extract content
@@ -53,45 +84,8 @@ def validate_frontmatter(file_path):
             # Extract frontmatter and body using Portmap method
             frontmatter, _ = extract_yaml_and_body(content)
             
-            # Check if the parsed content is a dictionary (valid YAML structure)
-            if not isinstance(frontmatter, dict):
-                raise ValueError(f"Invalid frontmatter structure in {file_path}")
-
-            # Define the required fields in the frontmatter
-            required_fields = ['title', 'datatype', 'sources', 'destinations']
-            
-            # Check that all required fields are present
-            for field in required_fields:
-                if field not in frontmatter:
-                    raise ValueError(f"Missing field '{field}' in {file_path}")
-
-            # Validate 'title': Must be a string
-            if not isinstance(frontmatter['title'], str):
-                raise ValueError(f"'title' must be a string in {file_path}")
-
-            # Validate 'datatype': Must be a string (no lists allowed)
-            if not isinstance(frontmatter['datatype'], str):
-                raise ValueError(f"'datatype' must be a string in {file_path}")
-
-            # Validate 'sources'
-            if isinstance(frontmatter['sources'], str):
-                # Single source, valid
-                pass
-            elif isinstance(frontmatter['sources'], list):
-                # Multiple sources, valid list format
-                pass
-            else:
-                raise ValueError(f"'sources' must be either a string or a list in {file_path}")
-
-            # Validate 'destinations'
-            if isinstance(frontmatter['destinations'], str):
-                # Single destination, valid
-                pass
-            elif isinstance(frontmatter['destinations'], list):
-                # Multiple destinations, valid list format
-                pass
-            else:
-                raise ValueError(f"'destinations' must be either a string or a list in {file_path}")
+            # Validate the extracted frontmatter
+            validate_fields(frontmatter, file_path)
 
             # Now check for trailing commas in all fields in the original content
             # Using regex to match any fields that have a comma at the end of the line
