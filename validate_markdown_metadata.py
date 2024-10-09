@@ -2,10 +2,19 @@ import sys
 import yaml
 import re
 
-# Helper function that checks if file content starts with a YAML header (---) before processing it
-# Modify from Portmap
+# Helper method that ensures the file has both a starting and ending '---'
 def has_yaml_header(file_content):
-    return file_content.strip().startswith('---')
+    """ Detects if a string (usually the contents of a .md file) has a YAML header
+    >>> has_yaml_header("---\\nTest: Yes\\n---")
+    True
+    >>> has_yaml_header("Test: No")
+    False
+    >>> has_yaml_header("---\\nProblem: about to be too many dashes\\n----")
+    False
+    """
+    p = re.compile(r"^---$", re.MULTILINE)
+    results = p.findall(file_content)
+    return len(results) > 1
 
 # This method is extracted from Portmap
 # and it should stay consistent with it if it needs updating
