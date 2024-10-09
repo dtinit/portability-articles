@@ -2,19 +2,47 @@ import sys
 import yaml
 import re
 
+# Helper function that checks if file content starts with a YAML header (---) before processing it
+# Modify from Portmap
+def has_yaml_header(file_content):
+    return file_content.strip().startswith('---')
+
+# This method is extracted from Portmap
+# and it should stay consistent with it if it needs updating
+def extract_yaml_and_body(file_content):
+    """ Extracts a YAML header delimited by lines consisting of '---' from the rest of a markdown document.
+    >>> extract_yaml_and_body("---\\nTest: Data\\nPart: Deux\\n---\\nSeparate this body part\\n")
+    ({'Test': 'Data', 'Part': 'Deux'}, 'Separate this body part\\n')
+    """
+    assert has_yaml_header(file_content) # File does not have a YAML header
+    in_yaml_header = False
+    in_body = False
+    yaml_content = []
+    body_content = []
+    for line in file_content.split("\n"):
+        if not in_yaml_header and not in_body and line == "---":
+            in_yaml_header = True
+        elif in_yaml_header and line == "---":
+            in_yaml_header = False
+            in_body = True
+        elif in_yaml_header:
+            yaml_content.append(line)
+        elif in_body:
+            body_content.append(line)
+
+    yaml_content = yaml.safe_load('\n'.join(yaml_content))
+    body = '\n'.join(body_content)
+    return yaml_content, body
+
 def validate_frontmatter(file_path):
     try:
         # Open the markdown file and extract content
         with open(file_path, 'r') as f:
-            # Split the content by '---' which indicates YAML frontmatter in markdown
-            content = f.read().split('---')
-            
-            # If there is no frontmatter section (should be between ---), raise an error
-            if len(content) < 3:
-                raise ValueError(f"No frontmatter found in {file_path}")
-            
-            # The actual YAML frontmatter is the second element (content[1])
-            frontmatter = yaml.safe_load(content[1])
+            # Reads content and stores it
+            content = f.read()
+
+            # Extract frontmatter and body using Portmap method
+            frontmatter, _ = extract_yaml_and_body(content)
             
             # Check if the parsed content is a dictionary (valid YAML structure)
             if not isinstance(frontmatter, dict):
