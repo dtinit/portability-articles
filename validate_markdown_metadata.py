@@ -73,6 +73,12 @@ def validate_fields(frontmatter, file_path):
         pass
     else:
         raise ValueError(f"'destinations' must be either a string or a list in {file_path}")
+    
+# Checks if a specified YAML field ends with a comma
+def does_field_end_with_comma(field, yaml_body):
+    datatype_pattern = re.compile(r"^" + re.escape(field) + r":\s*.*,\s*$", re.MULTILINE)
+    match = datatype_pattern.search(yaml_body)
+    return match is not None
 
 def validate_frontmatter(file_path):
     try:
@@ -87,27 +93,12 @@ def validate_frontmatter(file_path):
             # Validate the extracted frontmatter
             validate_fields(frontmatter, file_path)
 
-            # Now check for trailing commas in all fields in the original content
-            # Using regex to match any fields that have a comma at the end of the line
-            errors = []
+            # Check for trailing commas
+            fields_to_check = ['title', 'datatype', 'sources', 'destinations']
+            # Iterate over fields to check and then check for trailing commas
+            errors = [field for field in fields_to_check if does_field_end_with_comma(field, content)]
 
-            title_pattern = re.search(r'^title:\s*".*",\s*$', content[1], re.MULTILINE)
-            if title_pattern:
-                errors.append('title')
-
-            datatype_pattern = re.search(r'^datatype:\s*".*",\s*$', content[1], re.MULTILINE)
-            if datatype_pattern:
-                errors.append('datatype')
-
-            sources_pattern = re.search(r'^sources:\s*\[.*\],\s*$', content[1], re.MULTILINE)
-            if sources_pattern:
-                errors.append('sources')
-
-            destinations_pattern = re.search(r'^destinations:\s*\[.*\],\s*$', content[1], re.MULTILINE)
-            if destinations_pattern:
-                errors.append('destinations')
-
-            # If there are any errors, raise an error with the list of problematic fields
+            # If there are any fields with trailing commas, raise an error
             if errors:
                 raise ValueError(f"Trailing comma found in the following fields: {', '.join(errors)} in {file_path}")
 
