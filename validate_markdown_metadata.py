@@ -43,36 +43,28 @@ def extract_yaml_and_body(file_content):
     body = '\n'.join(body_content)
     return yaml_content, body
 
+# Checks if a field is of the expected type
+def is_field_valid_type(field_name, field_value, expected_type, file_path):
+    if not isinstance(field_value, expected_type):
+        # If expected_type is a tuple (e.g., (str, list)), it means that multiple types are allowed
+        expected_types = (
+            # Constructing user-friendly string that describes the expected type(s)
+            f"{' or '.join([t.__name__ for t in expected_type])}"
+            if isinstance(expected_type, tuple)
+            else expected_type.__name__
+        )
+        raise ValueError(f"'{field_name}' must be a {expected_types} in {file_path}")
+
 # Validates the required fields in the frontmatter
 def validate_fields(frontmatter, file_path):
-
-    # Validate 'title': Must be a string
-    if not isinstance(frontmatter['title'], str):
-        raise ValueError(f"'title' must be a string in {file_path}")
-
-    # Validate 'datatype': Must be a string (no lists allowed)
-    if not isinstance(frontmatter['datatype'], str):
-        raise ValueError(f"'datatype' must be a string in {file_path}")
-
-    # Validate 'sources'
-    if isinstance(frontmatter['sources'], str):
-        # Single source, valid
-        pass
-    elif isinstance(frontmatter['sources'], list):
-        # Multiple sources, valid list format
-        pass
-    else:
-        raise ValueError(f"'sources' must be either a string or a list in {file_path}")
-
-    # Validate 'destinations'
-    if isinstance(frontmatter['destinations'], str):
-        # Single destination, valid
-        pass
-    elif isinstance(frontmatter['destinations'], list):
-        # Multiple destinations, valid list format
-        pass
-    else:
-        raise ValueError(f"'destinations' must be either a string or a list in {file_path}")
+    # 'title': Must be a string
+    is_field_valid_type('title', frontmatter['title'], str, file_path)
+    # 'datatype': Must be a string (no lists allowed)
+    is_field_valid_type('datatype', frontmatter['datatype'], str, file_path)
+    # 'sources': Must be a string or a list
+    is_field_valid_type('sources', frontmatter['sources'], (str, list), file_path)
+    # 'destinations': Must be a string or a list
+    is_field_valid_type('destinations', frontmatter['destinations'], (str, list), file_path)
     
 # Checks if a specified YAML field ends with a comma
 def does_field_end_with_comma(field, yaml_body):
