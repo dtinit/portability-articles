@@ -2,7 +2,7 @@
 title: Exporting and browsing your X's interaction activity
 datatype: Likes & Favorites
 sources: X
-destinations: Download myself,
+destinations: Download myself
 ---
 
 # X’s “Download an archive of your data” for posts you’ve interacted with
