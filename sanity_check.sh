@@ -20,17 +20,45 @@ fi
 
 echo
 
-echo "Validating files"
+# Initialize arrays to store validations results
+passed_files=()
+failed_files=()
+
 # Loop through the found files and run validation
 for x in $FILES; do
   # Call the Python script to validate the file and store the result
   is_valid_md=$(python validate_markdown_metadata.py $x)
 
-  # If the result is "True", the file is valid, continue processing
+  # Check validation and store in respective array
   if [[ $is_valid_md == "True" ]]; then
-    echo "- File $x passed"
+    passed_files+=("$x")
   else
-    echo "- File $x failed"
-    exit 1
+    failed_files+=("$x")
   fi
 done
+
+echo "Validation results"
+echo
+
+# Display validation results
+if [ ${#passed_files[@]} -gt 0 ]; then
+  echo "Passed files:"
+  for file in "${passed_files[@]}"; do
+    echo "- $file"
+  done
+else
+  echo "- No files passed"
+fi
+
+echo 
+
+if [ ${#failed_files[@]} -gt 0 ]; then
+  echo "Failed files:"
+  for file in "${failed_files[@]}"; do
+    echo "- $file"
+  done
+  exit 1 # Exit with error code if any file failed
+else
+  echo "- No files failed"
+fi
+
