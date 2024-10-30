@@ -1,16 +1,26 @@
 #!/bin/bash
 
-echo "Loading the new and modified Markdown files in the articles folder"
+echo "Searching new and modified Markdown files in the articles folder"
 
 # Find new or modified markdown files in the articles folder using git diff with ACM filter
-FILES=$(git diff --name-only --diff-filter=ACM HEAD origin/main -- "articles/*.md")
+FILES=$(git diff --name-only --diff-filter=ACM origin/main..HEAD -- "articles/*.md")
+
+echo
 
 # Check if any files were found
 if [ -z "$FILES" ]; then
   echo "No new or modified markdown files found."
   exit 0
+  else
+    echo "Detected files:"
+    for file in $FILES; do
+      echo "- $file"
+    done
 fi
 
+echo
+
+echo "Validating files"
 # Loop through the found files and run validation
 for x in $FILES; do
   # Call the Python script to validate the file and store the result
@@ -18,9 +28,9 @@ for x in $FILES; do
 
   # If the result is "True", the file is valid, continue processing
   if [[ $is_valid_md == "True" ]]; then
-    echo "Validating file $x"
+    echo "- File $x passed"
   else
-    echo "File $x failed"
+    echo "- File $x failed"
     exit 1
   fi
 done
