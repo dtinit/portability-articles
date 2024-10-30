@@ -46,8 +46,6 @@ if [ ${#passed_files[@]} -gt 0 ]; then
   for file in "${passed_files[@]}"; do
     echo "- $file"
   done
-else
-  echo "- No files passed"
 fi
 
 echo 
@@ -57,8 +55,11 @@ if [ ${#failed_files[@]} -gt 0 ]; then
   for file in "${failed_files[@]}"; do
     echo "- $file"
   done
-  exit 1 # Exit with error code if any file failed
-else
-  echo "- No files failed"
 fi
 
+# Set the exit code based on whether there were any failed files
+if [ ${#failed_files[@]} -gt 0 ]; then
+  exit 1  # Exit with error code if any file failed
+else
+  echo "All files passed validation."
+fi
