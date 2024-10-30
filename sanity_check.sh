@@ -9,10 +9,10 @@ echo
 
 # Check if any files were found
 if [ -z "$FILES" ]; then
-  echo "No new or modified markdown files found."
+  echo "No new or modified articles found"
   exit 0
   else
-    echo "Detected files:"
+    echo "Detected articles:"
     for file in $FILES; do
       echo "- $file"
     done
@@ -21,19 +21,19 @@ fi
 echo
 
 # Initialize arrays to store validations results
-passed_files=()
-failed_files=()
+passed_articles=()
+failed_articles=()
 
-# Loop through the found files and run validation
+# Loop through the found articles and run validation
 for x in $FILES; do
-  # Call the Python script to validate the file and store the result
+  # Call the Python script to validate the article and store the result
   is_valid_md=$(python validate_markdown_metadata.py $x)
 
   # Check validation and store in respective array
   if [[ $is_valid_md == "True" ]]; then
-    passed_files+=("$x")
+    passed_articles+=("$x")
   else
-    failed_files+=("$x")
+    failed_articles+=("$x")
   fi
 done
 
@@ -41,25 +41,24 @@ echo "Validation results"
 echo
 
 # Display validation results
-if [ ${#passed_files[@]} -gt 0 ]; then
-  echo "Passed files:"
-  for file in "${passed_files[@]}"; do
+if [ ${#passed_articles[@]} -gt 0 ]; then
+  echo "Passed article(s):"
+  for file in "${passed_articles[@]}"; do
+    echo "- $file"
+  done
+  echo
+fi 
+
+if [ ${#failed_articles[@]} -gt 0 ]; then
+  echo "Failed article(s):"
+  for file in "${failed_articles[@]}"; do
     echo "- $file"
   done
 fi
 
-echo 
-
-if [ ${#failed_files[@]} -gt 0 ]; then
-  echo "Failed files:"
-  for file in "${failed_files[@]}"; do
-    echo "- $file"
-  done
-fi
-
-# Set the exit code based on whether there were any failed files
-if [ ${#failed_files[@]} -gt 0 ]; then
-  exit 1  # Exit with error code if any file failed
+# Set the exit code based on whether there were any failed articles
+if [ ${#failed_articles[@]} -gt 0 ]; then
+  exit 1  # Exit with error code if any article failed
 else
-  echo "All files passed validation."
+  echo "All articles passed validation."
 fi
