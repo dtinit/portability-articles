@@ -38,25 +38,19 @@ jobs:
         id: find_files
         run: |
           # Find new or modified markdown files in the 'articles' directory
-          MODIFIED_FILES=$(git diff --name-only --diff-filter=ACM origin/main HEAD -- "articles/*.md")
+          MODIFIED_FILES=$(git diff --name-only --diff-filter=ACM origin/main..HEAD -- "articles/*.md")
           if [ -z "$MODIFIED_FILES" ]; then
             echo "No new or modified articles found."
             echo "::set-output name=modified_files::"
           else
-            echo "New or modified markdown files found:"
-            echo "$MODIFIED_FILES"
+            echo "New or modified markdown file(s) found:"
+            echo "- $MODIFIED_FILES"
             echo "::set-output name=modified_files::$MODIFIED_FILES"
           fi
 
       # Run sanity check for modified files
       - name: Run sanity check
+        if: steps.find_files.outputs.modified_files
         run: |
-          if [ -z "${{ steps.find_files.outputs.modified_files }}" ]; then
-            echo "No articles to validate."
-          else
-            chmod +x sanity_check.sh
-            for file in ${{ steps.find_files.outputs.modified_files }}; do
-              echo "Validating $file..."
-              ./sanity_check.sh "$file"
-            done
-          fi
+          chmod +x sanity_check.sh
+          ./sanity_check.sh
