@@ -23,17 +23,20 @@ echo
 # Initialize arrays to store validations results
 passed_articles=()
 failed_articles=()
+failed_messages=()
 
 # Loop through the found articles and run validation
 for x in $FILES; do
   # Call the Python script to validate the article and store the result
-  is_valid_md=$(python validate_markdown_metadata.py $x)
+  validation_result=$(python validate_markdown_metadata.py "$x")
 
   # Check validation and store in respective array
-  if [[ $is_valid_md == "True" ]]; then
+  if [[ $validation_result == "True" ]]; then
     passed_articles+=("$x")
   else
     failed_articles+=("$x")
+    # Store the error message
+    failed_messages+=("$validation_result")
   fi
 done
 
@@ -51,8 +54,11 @@ fi
 
 if [ ${#failed_articles[@]} -gt 0 ]; then
   echo "Failed article(s):"
-  for file in "${failed_articles[@]}"; do
-    echo "- $file"
+  for i in "${!failed_articles[@]}"; do
+    echo "- ${failed_articles[$i]}"
+    # Display each line of the error message
+    echo " - ${failed_messages[$i]}" | sed 's/^/    /'
+    echo
   done
 fi
 
