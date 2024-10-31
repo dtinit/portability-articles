@@ -23,6 +23,8 @@ def extract_yaml_and_body(file_content):
     >>> extract_yaml_and_body("---\\nTest: Data\\nPart: Deux\\n---\\nSeparate this body part\\n")
     ({'Test': 'Data', 'Part': 'Deux'}, 'Separate this body part\\n')
     """
+
+    # Slightly modified from Portmap method
     if not has_yaml_header(file_content):
         raise ValueError("The file does not have a valid YAML header.")
     
@@ -97,7 +99,6 @@ def validate_frontmatter(file_path):
             content = f.read()
 
             # Extract frontmatter and body using Portmap method
-            # frontmatter, _ = extract_yaml_and_body(content)
             try:
                 frontmatter, _ = extract_yaml_and_body(content)
             except ValueError as ve:
@@ -119,15 +120,11 @@ def validate_frontmatter(file_path):
     
     except yaml.YAMLError as e:
         # Catch any YAML syntax errors
-        print(f"YAML Error in {file_path}: {e}")
-        return "False"
-        # return f"YAML Error in {file_path}: {e}"
+        return f"YAML Error in {file_path}: {e}"
     
     except Exception as e:
-        # Catch other errors (missing fields, invalid structure, trailing comma, etc.)
-        print(f"Error in {file_path}: {e}")
-        return "False"
-        # return f"Error in {file_path}: {e}"
+        # Catch other errors (missing fields, invalid structure, trailing comma, etc.)        
+        return f"Error in {file_path}: {e}"
 
 if __name__ == "__main__":
     # The script takes the file path as an argument
