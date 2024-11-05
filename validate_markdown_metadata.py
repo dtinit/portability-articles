@@ -23,7 +23,12 @@ def extract_yaml_and_body(file_content):
     >>> extract_yaml_and_body("---\\nTest: Data\\nPart: Deux\\n---\\nSeparate this body part\\n")
     ({'Test': 'Data', 'Part': 'Deux'}, 'Separate this body part\\n')
     """
-    assert has_yaml_header(file_content) # File does not have a YAML header
+
+    # Slightly modified from Portmap method
+    if not has_yaml_header(file_content):
+        raise ValueError("The file does not have a valid YAML header.")
+    
+    # assert has_yaml_header(file_content) # File does not have a YAML header
     in_yaml_header = False
     in_body = False
     yaml_content = []
@@ -44,7 +49,7 @@ def extract_yaml_and_body(file_content):
     return yaml_content, body
 
 # Checks if a field is of the expected type
-def is_field_valid_type(field_name, field_value, expected_type, file_path):
+def is_field_valid_type(field_name, field_value, expected_type, file_path, errors):
     if not isinstance(field_value, expected_type):
         # If expected_type is a tuple (e.g., (str, list)), it means that multiple types are allowed
         expected_types = (
@@ -53,18 +58,31 @@ def is_field_valid_type(field_name, field_value, expected_type, file_path):
             if isinstance(expected_type, tuple)
             else expected_type.__name__
         )
-        raise ValueError(f"'{field_name}' must be a {expected_types} in {file_path}")
+        errors.append(f"'{field_name}' must be a {expected_types} in {file_path}")
 
 # Validates the required fields in the frontmatter
-def validate_fields(frontmatter, file_path):
+def validate_fields(frontmatter, file_path, errors):
     # 'title': Must be a string
-    is_field_valid_type('title', frontmatter['title'], str, file_path)
+    if 'title' not in frontmatter:
+        errors.append(f" - 'title' is missing in {file_path}")
+    else:
+        is_field_valid_type('title', frontmatter.get('title'), str, file_path, errors)
     # 'datatype': Must be a string (no lists allowed)
-    is_field_valid_type('datatype', frontmatter['datatype'], str, file_path)
+    if 'datatype' not in frontmatter:
+        errors.append(f" - 'datatype' is missing in {file_path}")
+    else:
+        is_field_valid_type('datatype', frontmatter.get('datatype'), str, file_path, errors)
     # 'sources': Must be a string or a list
-    is_field_valid_type('sources', frontmatter['sources'], (str, list), file_path)
+    if 'sources' not in frontmatter:
+        errors.append(f" - 'sources' is missing in {file_path}")
+    else:
+        is_field_valid_type('sources', frontmatter.get('sources'), (str, list), file_path, errors)
     # 'destinations': Must be a string or a list
-    is_field_valid_type('destinations', frontmatter['destinations'], (str, list), file_path)
+    if 'destinations' not in frontmatter:
+        errors.append(f" - 'destinations' is missing in {file_path}")
+    else:
+        is_field_valid_type('destinations', frontmatter.get('destinations'), (str, list), file_path, errors)
+
     
 # Checks if a specified YAML field ends with a comma
 def does_field_end_with_comma(field, yaml_body):
@@ -73,6 +91,7 @@ def does_field_end_with_comma(field, yaml_body):
     return match is not None
 
 def validate_frontmatter(file_path):
+    errors = []
     try:
         # Open the markdown file and extract content
         with open(file_path, 'r') as f:
@@ -80,32 +99,32 @@ def validate_frontmatter(file_path):
             content = f.read()
 
             # Extract frontmatter and body using Portmap method
-            frontmatter, _ = extract_yaml_and_body(content)
+            try:
+                frontmatter, _ = extract_yaml_and_body(content)
+            except ValueError as ve:
+                errors.append(str(ve))
+                return "\n".join(errors)
             
             # Validate the extracted frontmatter
-            validate_fields(frontmatter, file_path)
+            validate_fields(frontmatter, file_path, errors)
 
-            # Check for trailing commas
             fields_to_check = ['title', 'datatype', 'sources', 'destinations']
             # Iterate over fields to check and then check for trailing commas
-            errors = [field for field in fields_to_check if does_field_end_with_comma(field, content)]
+            comma_errors = [field for field in fields_to_check if does_field_end_with_comma(field, content)]
+            if comma_errors:
+                errors.append(f"Trailing comma found in fields: {', '.join(comma_errors)} in {file_path}")
 
-            # If there are any fields with trailing commas, raise an error
             if errors:
-                raise ValueError(f"Trailing comma found in the following fields: {', '.join(errors)} in {file_path}")
-
-            # If all validations pass, return "True"
+                return "\n".join(errors)
             return "True"
     
     except yaml.YAMLError as e:
         # Catch any YAML syntax errors
-        print(f"YAML Error in {file_path}: {e}")
-        return "False"
+        return f"YAML Error in {file_path}: {e}"
     
     except Exception as e:
-        # Catch other errors (missing fields, invalid structure, trailing comma, etc.)
-        print(f"Error in {file_path}: {e}")
-        return "False"
+        # Catch other errors (missing fields, invalid structure, trailing comma, etc.)        
+        return f"Error in {file_path}: {e}"
 
 if __name__ == "__main__":
     # The script takes the file path as an argument

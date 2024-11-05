@@ -1,26 +1,70 @@
 #!/bin/bash
 
-echo "Loading the new and modified Markdown files in the articles folder"
+echo "Searching new and modified Markdown files in the articles folder"
 
 # Find new or modified markdown files in the articles folder using git diff with ACM filter
-FILES=$(git diff --name-only --diff-filter=ACM HEAD origin/main -- "articles/*.md")
+FILES=$(git diff --name-only --diff-filter=ACM origin/main..HEAD -- "articles/*.md")
+
+echo
 
 # Check if any files were found
 if [ -z "$FILES" ]; then
-  echo "No new or modified markdown files found."
+  echo "No new or modified articles found"
   exit 0
+  else
+    echo "Detected articles:"
+    for file in $FILES; do
+      echo "- $file"
+    done
 fi
 
-# Loop through the found files and run validation
-for x in $FILES; do
-  # Call the Python script to validate the file and store the result
-  is_valid_md=$(python validate_markdown_metadata.py $x)
+echo
 
-  # If the result is "True", the file is valid, continue processing
-  if [[ $is_valid_md == "True" ]]; then
-    echo "Validating file $x"
+# Initialize arrays to store validations results
+passed_articles=()
+failed_articles=()
+failed_messages=()
+
+# Loop through the found articles and run validation
+for x in $FILES; do
+  # Call the Python script to validate the article and store the result
+  validation_result=$(python validate_markdown_metadata.py "$x")
+
+  # Check validation and store in respective array
+  if [[ $validation_result == "True" ]]; then
+    passed_articles+=("$x")
   else
-    echo "File $x failed"
-    exit 1
+    failed_articles+=("$x")
+    # Store the error message
+    failed_messages+=("$validation_result")
   fi
 done
+
+echo "Validation results"
+echo
+
+# Display validation results
+if [ ${#passed_articles[@]} -gt 0 ]; then
+  echo "Passed article(s):"
+  for file in "${passed_articles[@]}"; do
+    echo "- $file"
+  done
+  echo
+fi 
+
+if [ ${#failed_articles[@]} -gt 0 ]; then
+  echo "Failed article(s):"
+  for i in "${!failed_articles[@]}"; do
+    echo "- ${failed_articles[$i]}"
+    # Display each line of the error message
+    echo " - ${failed_messages[$i]}" | sed 's/^/    /'
+    echo
+  done
+fi
+
+# Set the exit code based on whether there were any failed articles
+if [ ${#failed_articles[@]} -gt 0 ]; then
+  exit 1  # Exit with error code if any article failed
+else
+  echo "All articles passed validation."
+fi
