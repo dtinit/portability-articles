@@ -1,6 +1,6 @@
 ---
 title: Exporting and browsing your X's interaction activity
-datatype: Likes & Favorites
+datatype: Likes or Favorites
 sources: X
 destinations: Download myself
 ---
