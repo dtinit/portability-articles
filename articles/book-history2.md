@@ -13,8 +13,8 @@ The [Shelf app](https://www.shelf.im/) is part of a mission to help users access
 After installing, you're prompted to connect to services like Netflix (for watching activity), Goodreads (for
 reading activity), Steam (for game play activity), Apple Music and Spotify (for listening activity).  
 
-* Note about 'datatype' - yes Shelf handles several data types but at present the Portability map does not, 
-so we filed this article under our one matching datatype, "Book History", for now.
+* Note about 'datatype' - yes Shelf handles several data types, but this collection files each article under
+a single datatype, so we filed this article under our one matching datatype, "Book History".
 
 Shelf currently makes this personal media consumption activity available for you to share (importantly, users
 have control over what gets shared and especially what gets highlighted).
