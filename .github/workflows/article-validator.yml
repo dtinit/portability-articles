@@ -2,7 +2,9 @@ name: Article Validator
 
 on:
   pull_request:
-    types: [opened, reopened] 
+    types: [opened, reopened, synchronize]
+  push:
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -15,10 +17,11 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
         with:
+          ref: ${{ github.head_ref }}
           fetch-depth: 0
       - run: echo "Checkout code"
       
-      - name: Setup Python ${{ matrix.python-version}}
+      - name: Setup Python ${{ matrix.python-version }}
         uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python-version }}
@@ -30,7 +33,24 @@ jobs:
           pip install -r requirements.txt
       - run: echo "Installing Dependencies"
 
+      # Find all new or modified markdown files in the articles folder
+      - name: Find new and modified articles
+        id: find_files
+        run: |
+          # Find new or modified markdown files in the 'articles' directory
+          MODIFIED_FILES=$(git diff --name-only --diff-filter=ACM origin/main..HEAD -- "articles/*.md")
+          if [ -z "$MODIFIED_FILES" ]; then
+            echo "No new or modified articles found."
+            echo "::set-output name=modified_files::"
+          else
+            echo "New or modified markdown file(s) found:"
+            echo "- $MODIFIED_FILES"
+            echo "::set-output name=modified_files::$MODIFIED_FILES"
+          fi
+
+      # Run sanity check for modified files
       - name: Run sanity check
+        if: steps.find_files.outputs.modified_files
         run: |
           chmod +x sanity_check.sh
           ./sanity_check.sh
